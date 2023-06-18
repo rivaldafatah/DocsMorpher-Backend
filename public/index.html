@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Konversi File</h1>
+    <form action="http://localhost:5000/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="document" />
+        <input type="submit" value="Upload" />
+    </form>
+    <!-- <script>
+        document.querySelector('form').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const fileInput = document.querySelector('input[name="wordFile"]');
+          const formData = new FormData();
+          formData.append('wordFile', fileInput.files[0]);
+    
+          fetch('/upload', {
+            method: 'GET',
+            body: formData,
+          })
+          .then(response => response.json())
+          .then(data => {
+            const resultDiv = document.querySelector('#result');
+            resultDiv.innerHTML = `<a href="${data.downloadLink}" target="_blank">Unduh PDF</a>`;
+          });
+        });
+      </script> -->
+</body>
+</html>
