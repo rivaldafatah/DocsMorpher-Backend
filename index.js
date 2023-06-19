@@ -32,7 +32,7 @@ app.post('/upload', upload.single('document'), async (req, res) => {
     formData.append('document', fs.createReadStream(req.file.path));
     const response = await axios.post('https://api.pspdfkit.com/build', formData, {
       headers: {
-        'Authorization': 'Bearer pdf_live_RUgZeS6w5F8ryvPfiXTTmb91ccgbCIYiKFrBcQpXh4V',
+        'Authorization': 'Bearer pdf_live_SLMk3WARLHy7UlgUW858BAbTCWrkQ7G7eEUopGgxNpj',
         ...formData.getHeaders()
       },
       responseType: "stream"
@@ -66,7 +66,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     formData.append('image', fs.createReadStream(req.file.path));
     const response = await axios.post('https://api.pspdfkit.com/build', formData, {
       headers: {
-        'Authorization': 'Bearer pdf_live_RUgZeS6w5F8ryvPfiXTTmb91ccgbCIYiKFrBcQpXh4V',
+        'Authorization': 'Bearer pdf_live_SLMk3WARLHy7UlgUW858BAbTCWrkQ7G7eEUopGgxNpj',
         ...formData.getHeaders()
       },
       responseType: "stream"
