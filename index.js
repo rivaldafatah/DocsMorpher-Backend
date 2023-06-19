@@ -5,7 +5,7 @@ const FormData = require('form-data');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const port = 7000;
+const port = 5000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 const storage = multer.diskStorage({
@@ -32,14 +32,14 @@ app.post('/upload', upload.single('document'), async (req, res) => {
     formData.append('document', fs.createReadStream(req.file.path));
     const response = await axios.post('https://api.pspdfkit.com/build', formData, {
       headers: {
-        'Authorization': 'Bearer pdf_live_SLMk3WARLHy7UlgUW858BAbTCWrkQ7G7eEUopGgxNpj',
+        'Authorization': 'Bearer pdf_live_ecALVGdiQhM4Gghh8WSiYGZSNWi8tfeFNKGPUttxJSJ',
         ...formData.getHeaders()
       },
       responseType: "stream"
     });
     const fileName = req.file.filename;
     const filePath = req.file.path;
-    const downloadLink = `http://localhost:${port}/uploads/${path.parse(fileName).name}.pdf`;
+    const downloadLink = `http://localhost:${port}/download/pdf/${path.parse(fileName).name}.pdf`;
     response.data.pipe(fs.createWriteStream(`public/uploads/${path.parse(fileName).name}.pdf`));
     // Send the PDF download link to the client
     res.json({ downloadLink });
@@ -66,7 +66,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     formData.append('image', fs.createReadStream(req.file.path));
     const response = await axios.post('https://api.pspdfkit.com/build', formData, {
       headers: {
-        'Authorization': 'Bearer pdf_live_SLMk3WARLHy7UlgUW858BAbTCWrkQ7G7eEUopGgxNpj',
+        'Authorization': 'Bearer pdf_live_ecALVGdiQhM4Gghh8WSiYGZSNWi8tfeFNKGPUttxJSJ',
         ...formData.getHeaders()
       },
       responseType: "stream"
