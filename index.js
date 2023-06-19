@@ -5,7 +5,7 @@ const FormData = require('form-data');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const port = 5000;
+const port = 6000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 const storage = multer.diskStorage({
@@ -39,7 +39,7 @@ app.post('/upload', upload.single('document'), async (req, res) => {
     });
     const fileName = req.file.filename;
     const filePath = req.file.path;
-    const downloadLink = `http://localhost:${port}/download/pdf/${path.parse(fileName).name}.pdf`;
+    const downloadLink = `http://localhost:${port}/uploads/${path.parse(fileName).name}.pdf`;
     response.data.pipe(fs.createWriteStream(`public/uploads/${path.parse(fileName).name}.pdf`));
     // Send the PDF download link to the client
     res.json({ downloadLink });
